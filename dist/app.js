@@ -1,3 +1,4 @@
+//global variables
 let hamburger = document.querySelector(".hamburger"),
   closeNav = document.querySelector(".close-nav"),
   navbar = document.querySelector(".navbar"),
@@ -15,7 +16,6 @@ let hamburger = document.querySelector(".hamburger"),
   cartItems = document.querySelector(".cart-items"),
   arrOfItems = [],
   thumbs = document.querySelectorAll(".thumbs img");
-
 const imgs = [
   {
     id: 1,
@@ -35,25 +35,25 @@ const imgs = [
   },
 ];
 
-hamburger.onclick = function () {
+hamburger.onclick = function () { //open navbar
   navbar.classList.add("showNav");
   navItems.classList.add("stretchNav");
 };
-closeNav.onclick = function () {
+closeNav.onclick = function () { //close navbar
   navbar.classList.remove("showNav");
   navItems.classList.remove("stretchNav");
 };
-cart.onclick = function () {
+cart.onclick = function () { //toggle cart 
   document.querySelector(".cart").classList.toggle("openCart");
 };
 
-let emptyMsg = document.createElement("p");
+let emptyMsg = document.createElement("p"); // if there is no items show empty message 
 if (arrOfItems.length === 0) {
   emptyMsg.textContent = "Your cart is empty";
   emptyMsg.setAttribute("class", "empty-msg");
   cartItems.append(emptyMsg);
 }
-let checkoutBtn = document.createElement("button");
+let checkoutBtn = document.createElement("button"); //create checkout button 
 checkoutBtn.textContent = "Checkout";
 checkoutBtn.setAttribute("class", "checkout");
 
@@ -82,7 +82,7 @@ prev.onclick = function () {
   document.getElementById("main-img").src = imgs[counter].src;
 };
 
-btnAdd.onclick = function () {
+btnAdd.onclick = function () { //add items into cart 
   if (shoesCounter.value === "0") {
     warning.classList.add("showWarningMsg");
   } else {
@@ -167,7 +167,7 @@ btnAdd.onclick = function () {
     cartItems.lastChild.after(checkoutBtn);
   }
 };
-thumbs.forEach((thumb, index) => {
+thumbs.forEach((thumb, index) => { //selected main image, add active class on selected tnumbnail  
   thumb.onclick = () => {
     document.getElementById("main-img").src = `images/image-product-${index+1}.jpg`;
     thumbs.forEach((thumb) => {
